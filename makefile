@@ -1,5 +1,5 @@
 CC = avr-gcc
-CFLAGS = -g -mmcu=atmega32m1
+CFLAGS = -g -mmcu=atmega32m1 -O3
 PROG = stk500 # the Pololu acts like the STK500
 MCU = m32m1
 PORT = /dev/tty.usbmodem00100561

@@ -1,5 +1,3 @@
-#define F_CPU 1000000UL
-
 #include <avr/io.h>
 #include <avr/cpufunc.h> // for _NOP()
 
@@ -18,8 +16,12 @@
 #define WCOL 6 // write collision flag
 #define SPI2X 0 // double speed bit
 
-void set_cs_low();
-void set_cs_high();
+typedef volatile uint8_t* PIN;
+typedef volatile uint8_t* PORT;
+
 void init_spi(void);
 char send_spi(char);
 
+void init_cs(int, PORT);
+void set_cs_low(int, PORT);
+void set_cs_high(int, PORT);

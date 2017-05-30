@@ -1,5 +1,10 @@
 #include <avr/io.h>
 
+#define F_CPU 1000000UL
+#include <util/delay.h>
+
+#include "spi.h"
+
 // Define command strobes
 #define SRES 0x30
 #define SFSTXON 0x31
@@ -205,4 +210,4 @@
 #define TXLAST            0xD5
 
 void init_cc1120();
-
+void send(char*, char, uint8_t);
