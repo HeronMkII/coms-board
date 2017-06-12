@@ -3,19 +3,15 @@
 #include "spi.h"
 #include "uart.h"
 #include "trans.h"
+#include "log.h"
 
 int main(void) {
-    init_spi();
     init_uart();
-    //init_cc1120();
 
-    char msg[] = "the quick brown fox jumped over the lazy dog";
-    //send(msg, 0xAA, sizeof(msg));
+    char msg[] = "the quick brown fox jumped over the lazy dog\n";
 
-    for (int i = 0; i < 10000; i++) {
-        send_uart(msg);
+    for (;;) {
+        print("%s", msg);
+        _delay_ms(100);
     }
-
-    DDRC |= _BV(PC0);
-    PORTC |= _BV(PC0);
 }
