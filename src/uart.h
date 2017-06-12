@@ -1,14 +1,13 @@
 #include <avr/io.h>
 #include <string.h>
+#include <stdio.h>
 
-#define F_IO 8000000 // 8 MHz
-
-#define BAUD_RATE 9600
-#define BIT_SAMPLES 16
+#define F_IO 1000000UL // 1 MHz
+#define BAUD_RATE 9600UL
+#define BIT_SAMPLES 4UL
 
 #define UART_TX PD3
 #define UART_RX PD4
 
-void put_char(char);
 void init_uart();
-void send_uart(char *);
+void send_uart(const unsigned char *);
