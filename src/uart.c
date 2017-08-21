@@ -1,9 +1,8 @@
 #include "uart.h"
 
-void put_char(const unsigned char);
-
 void put_char(const unsigned char c) {
-    while (LINSIR & _BV(LBUSY));
+    int TIMEOUT = 65535;
+    while ((LINSIR & _BV(LBUSY)) && TIMEOUT--);
     LINDAT = c;
 }
 
@@ -24,8 +23,8 @@ void init_uart() {
     // enable UART, full duplex
 }
 
-void send_uart(const unsigned char* msg) {
-    for (int i = 0; i < strlen(msg); i++) {
+void send_uart(const uint8_t* msg) {
+    for (int i = 0; i < strnlen(msg, 80); i++) {
         put_char(msg[i]);
     }
 }
