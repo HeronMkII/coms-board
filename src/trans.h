@@ -4,6 +4,7 @@
 #include <util/delay.h>
 
 #include "spi.h"
+#include "log.h"
 
 // Define command strobes
 #define SRES 0x30
@@ -210,4 +211,14 @@
 #define TXLAST            0xD5
 
 void init_cc1120();
-void send(char*, char, uint8_t);
+void send(uint8_t*, uint8_t, uint8_t);
+
+void print_status(uint8_t);
+uint8_t get_status();
+
+uint8_t cmd(uint8_t);
+void write(uint8_t, uint8_t);
+void write_extended(uint8_t, uint8_t);
+
+void set_cs_low_cc1120();
+void set_cs_high_cc1120();

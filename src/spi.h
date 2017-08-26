@@ -20,7 +20,7 @@ typedef volatile uint8_t* PIN;
 typedef volatile uint8_t* PORT;
 
 void init_spi(void);
-char send_spi(char);
+uint8_t send_spi(uint8_t);
 
 void init_cs(int, PORT);
 void set_cs_low(int, PORT);
